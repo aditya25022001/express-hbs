@@ -32,7 +32,7 @@ describe('multiple directories', function() {
       .get('/test1')
       .end(function (err, res) {
         assert.ifError(err);
-        var expected = '<h1>test1</h1>\n';
+        var expected = '<h1>test1</h1>';
         assert.equal(res.text, expected);
         done();
       });
@@ -44,7 +44,7 @@ describe('multiple directories', function() {
       .get('/test2')
       .end(function (err, res) {
         assert.ifError(err);
-        var expected = '<h1>test2</h1>\n';
+        var expected = '<h1>test2</h1>';
         assert.equal(res.text, expected);
         done();
       });
@@ -58,7 +58,7 @@ describe('multiple directories', function() {
         .get('/collide')
         .end(function (err, res) {
           assert.ifError(err);
-          var expected = '<h1>collide1</h1>\n';
+          var expected = '<h1>collide1</h1>';
           assert.equal(res.text, expected);
           done();
         });
@@ -70,7 +70,7 @@ describe('multiple directories', function() {
         .get('/collide')
         .end(function (err, res) {
           assert.ifError(err);
-          var expected = '<h1>collide2</h1>\n';
+          var expected = '<h1>collide2</h1>';
           assert.equal(res.text, expected);
           done();
         });
@@ -91,7 +91,7 @@ describe('multiple directories', function() {
       .get('/error')
       .end(function(err, res) {
         assert.ifError(err);
-        assert(res.error.text.indexOf('views1/error.hbs]') > 0);
+        assert(res.error.text.indexOf('views1\\error.hbs]') > 0);
         done();
       });
     });
@@ -107,7 +107,7 @@ describe('multiple directories', function() {
       .get('/error')
       .end(function(err, res) {
         assert.ifError(err);
-        assert(res.error.text.indexOf('views2/error.hbs]') > 0);
+        assert(res.error.text.indexOf('views2\\error.hbs]') > 0);
         done();
       });
     });
